@@ -1,7 +1,49 @@
-import React from 'react';
+
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee, faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
+
 
 function Header() {
+  
+  const [searchFormActive, setSearchFormActive] = useState(false);
+  const [shoppingCartActive, setShoppingCartActive] = useState(false);
+  const [loginFormActive, setLoginFormActive] = useState(false);
+  const [navbarActive, setNavbarActive] = useState(false);
+
+  const handleSearchButtonClick = () => {
+    setSearchFormActive(!searchFormActive);
+    setNavbarActive(false);
+    setShoppingCartActive(false);
+    setLoginFormActive(false);
+  };
+
+  const handleCartButtonClick = () => {
+    setShoppingCartActive(!shoppingCartActive);
+    setSearchFormActive(false);
+    setNavbarActive(false);
+    setLoginFormActive(false);
+  };
+
+  const handleLoginButtonClick = () => {
+    setLoginFormActive(!loginFormActive);
+    setSearchFormActive(false);
+    setNavbarActive(false);
+    setShoppingCartActive(false);
+  };
+
+  const handleMenuButtonClick = () => {
+    setNavbarActive(!navbarActive);
+    setSearchFormActive(false);
+    setShoppingCartActive(false);
+    setLoginFormActive(false);
+  };
+
+
+
+
   return (
+    
     <header className="header">
       <a href="#" className="logo"><i className="fa-solid fa-basket-shopping"></i>foodX</a>
       <nav className="navbar">
@@ -24,18 +66,7 @@ function Header() {
         <label htmlFor="search-box" className="fas fa-search"></label>
       </form>
 
-      <div className="shopping-cart">
-        <div className="box">
-          <i className="fa-solid fa-trash"></i>
-          <img src="Images/img01.jfif" alt="" />
-          <div className="content">
-            <h3>watermelon</h3>
-            <span className="price">100Rs</span>
-            <span className="quantity">qty : 1</span>
-          </div>
-        </div>
-        {/* Add other shopping cart items here */}
-      </div>
+      
 
       <form action="" className="login-form">
         <h3>login now</h3>
